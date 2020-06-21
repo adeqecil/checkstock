@@ -50,8 +50,8 @@ class UserController extends Controller
             'fullname' => $request->fullname,
             'dateofbirth' => $request->dateofbirth,
             'gender' => $request->gender,
-            'password' => encrypt($request->password),
-            'retypepassword' => encrypt($request->retypepassword),
+            'password' => bcrypt($request->password),
+            'retypepassword' => bcrypt($request->retypepassword),
             'email' => $request->email
         ]);
 
@@ -77,7 +77,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('edituser', compact('user'));
     }
 
     /**
@@ -89,7 +89,23 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+			'fullname' => 'required',
+			'dateofbirth' => 'required',
+			'gender' => 'required',
+			'password' => 'required',
+			'retypepassword' => 'required',
+			'email' => 'required'
+		]);
+		User::where('id', $id)->update([
+			'fullname' => $request->fullname,
+			'dateofbirth' => $request->dateofbirth,
+			'gender' => $request->gender,
+			'password' => bcrypt($request->password),
+			'retypepassword' => bcrypt($request->retypepassword),
+			'email' => $request->email
+		]);
+		return redirect('user')->with('status','User has been updated');
     }
 
     /**

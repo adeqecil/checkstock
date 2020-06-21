@@ -51,7 +51,8 @@
                                 <td>{{ $users->retypepassword }}</td>
                                 <td>{{ $users->email }}</td>
                                 <td>
-                                    <a href="#" class="badge badge-success">Edit</a>
+                                    <!--TAMBAHAN-->
+									<a href="user/{{ $users->id }}/edituser" class="badge badge-success">Edit</a>
                                     <form action="user/{{ $users->id }}" method="POST" class="d-inline">
                                         @method('delete')
                                         @csrf

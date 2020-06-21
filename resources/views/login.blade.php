@@ -49,11 +49,11 @@
                                             {{ session('status') }}
                                         </div>
                                     @endif
-                                    <form class="login" action="auth" method="POST">
+                                    <form class="login" action="{{ route('login') }}" method="POST">
                                         @csrf
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
-                                                placeholder="Enter Email Address..." name="email">
+                                                placeholder="Enter Email or Username..." name="email">
                                         </div>
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"

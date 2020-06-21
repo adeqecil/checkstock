@@ -16,9 +16,10 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <form method="POST" action="product">
+                <form method="POST" action="update">
                     @csrf
                     <div class="form-group">
+					<input class="form-control" type="hidden" name="id" id="id" value="{{ $products->id}}">
                         <label for="productname">Product</label>
                     <input type="text" class="form-control @error('productname') is-invalid @enderror" placeholder="Product Name..." name="productname" value="{{ $products->product }}" >
                         @error('productname')

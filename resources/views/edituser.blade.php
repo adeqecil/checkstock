@@ -16,35 +16,36 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <form method="POST" action="adduser">
+                <form method="POST" action="update">
                     @csrf
                     <div class="form-group">
+					<input class="form-control" type="hidden" name="id" id="id" value="{{ $user->id}}">
                         <label for="fullname">Full Name</label>
-                        <input type="text" class="form-control" placeholder="Full Name..." name="fullname">
+                        <input type="text" class="form-control" placeholder="Full Name..." name="fullname" value="{{ $user->fullname }}">
                     </div>
                     <div class="form-group">
                         <label for="dateofbirth">Date of birth</label>
-                        <input type="text" class="form-control" placeholder="Date of birth..." name="dateofbirth">
+                        <input type="text" class="form-control" placeholder="Date of birth..." name="dateofbirth" value="{{ $user->dateofbirth }}">
                     </div>
                     <div class="form-group">
                         <label for="gender">Gender</label>
-                        <select class="form-control" name="gender">
+                        <select class="form-control" name="gender" value="{{ $user->gender }}">
                             <option>Male</option>
                             <option>Female</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" placeholder="Password..." name="password">
+                        <input type="password" class="form-control" placeholder="Password..." name="password" value="{{ $user->password }}">
                     </div>
                     <div class="form-group">
                         <label for="retypepassword">Retype Password</label>
                         <input type="password" class="form-control" placeholder="Retype Password..."
-                            name="retypepassword">
+                            name="retypepassword" value="{{ $user->password }}">
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" placeholder="Email..." name="email">
+                        <input type="email" class="form-control" placeholder="Email..." name="email" value="{{ $user->email }}">
                     </div>
                     <button type="submit" class="btn btn-primary btn-add-product-user">Submit</button>
                 </form>
