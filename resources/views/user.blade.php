@@ -23,9 +23,11 @@
                     </div>
                 @endif
                 {{-- Add --}}
-                <div class="row btn-add">
-                    <a href="adduser" class="btn btn-primary">Add User</a>
-                </div>
+                @if(Auth::user()->role=='admin')
+                    <div class="row btn-add">
+                        <a href="adduser" class="btn btn-primary">Add User</a>
+                    </div>
+                @endif
                 {{-- End Add --}}
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
@@ -50,15 +52,17 @@
                                 <td>{{ $users->password }}</td>
                                 <td>{{ $users->retypepassword }}</td>
                                 <td>{{ $users->email }}</td>
-                                <td>
-                                    <!--TAMBAHAN-->
-									<a href="user/{{ $users->id }}/edituser" class="badge badge-success">Edit</a>
-                                    <form action="user/{{ $users->id }}" method="POST" class="d-inline">
-                                        @method('delete')
-                                        @csrf
-                                        <button type="submit" class="badge badge-danger">Delete</button>
-                                    </form>
-                                </td>
+                                @if(Auth::user()->role=='admin')
+                                    <td>
+                                        <!--TAMBAHAN-->
+								    	<a href="user/{{ $users->id }}/edituser" class="badge badge-success">Edit</a>
+                                        <form action="user/{{ $users->id }}" method="POST" class="d-inline">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" class="badge badge-danger">Delete</button>
+                                        </form>
+                                    </td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>

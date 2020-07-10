@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('retypepassword');
             $table->string('email');
             $table->timestamps();
+            $table->enum('role',  ['user', 'admin'])->default('user');
         });
     }
 
