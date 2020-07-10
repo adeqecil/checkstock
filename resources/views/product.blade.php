@@ -24,11 +24,9 @@
                     
                 @endif
                 {{-- Add --}}
-                @if(Auth::user()->role=='admin')
-                    <div class="row btn-add">
-                        <a href="addproduct" class="btn btn-primary">Add Product</a>
-                    </div>
-                @endif
+                <div class="row btn-add">
+                    <a href="addproduct" class="btn btn-primary">Add Product</a>
+                </div>
                 {{-- End Add --}}
 
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
