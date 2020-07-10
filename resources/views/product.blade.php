@@ -21,6 +21,7 @@
                     <div class="alert alert-success">
                         {{ session('status') }}
                     </div>
+                    
                 @endif
                 {{-- Add --}}
                 <div class="row btn-add">
